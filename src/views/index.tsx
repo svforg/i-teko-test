@@ -1,26 +1,30 @@
-import React from "react";
-import {NavLink, Route, Switch} from "react-router-dom";
+import React, { useEffect } from "react";
+import { Route, Switch } from "react-router-dom";
+import { Container } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
-import {AppRoutes} from "../routes/AppRoutes";
-import {withSuspense} from "../utils/hoc/withSuspense";
-import {Container, Nav, Navbar} from "react-bootstrap";
+import { useAppDispatch } from "../store";
+import { participantsTC } from "../store/participants/thunk";
+import { participantsSelectors } from "../store/participants/selectors";
 
-export const Root: React.FC = () => {
+import { AppRoutes } from "../routes/AppRoutes";
+import { withSuspense } from "../utils/hoc/withSuspense";
+import { AppNavBar } from "../components/AppNavBar/AppNavBar";
+
+export const Root = () => {
+  const participants = useSelector(participantsSelectors.participants);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (Object.keys(participants).length === 0) {
+      dispatch(participantsTC.fetchParticipants());
+    }
+  }, [dispatch, participants]);
+
   return (
     <>
-      <header className="header">
-        <Navbar bg="light" expand="lg">
-          <Container>
-            <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="me-auto">
-                <NavLink className="nav-link" to={'/participants'}>Participants</NavLink>
-              </Nav>
-            </Navbar.Collapse>
-          </Container>
-        </Navbar>
-      </header>
+      <AppNavBar />
 
       <main>
         <Switch>

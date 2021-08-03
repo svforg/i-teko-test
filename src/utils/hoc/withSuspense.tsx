@@ -1,15 +1,10 @@
 import React from 'react'
-import {Container, Spinner} from "react-bootstrap";
+import { LoadingSpinner } from "../../components/LoadingSpinner/LoadingSpinner";
 
 export function withSuspense<WCP>(WrappedComponent: React.ComponentType<WCP>) {
   return (props: WCP) => {
-    const fallbackUi = (
-      <Container>
-        <Spinner animation="border" variant="primary" />
-      </Container>
-    );
     return (
-      <React.Suspense fallback={fallbackUi}>
+      <React.Suspense fallback={<><LoadingSpinner /></>}>
         <WrappedComponent {...props as WCP}/>
       </React.Suspense>
     )

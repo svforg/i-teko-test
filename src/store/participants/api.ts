@@ -1,5 +1,5 @@
-import participantsMockData from "./participantsMockData";
-import ApiService from "../../services";
+import { participantsMockData } from "./participantsMockData";
+import { ApiService } from "../../services";
 
 export class participantsApi {
   static getParticipants(): Promise<any> {
@@ -15,6 +15,6 @@ export class participantsApi {
     };
 
     return api
-      .returnPromiseWithData(answer, 300)
+      .returnPromiseWithData(answer, 1000)
   };
 }

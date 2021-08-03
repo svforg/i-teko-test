@@ -15,16 +15,15 @@ type THomeProps = {
   currentUser: IFormValues
   agreement: any
 
-  pushNewParticipant: (values: IFormValues) => void
+  updateCurrentParticipant: (values: IFormValues) => void
   setCurrentUser: (values: IFormValues) => void
 }
 
-export const Home: React.FC<THomeProps> = memo((props) => {
+export const Profile: React.FC<THomeProps> = memo((props) => {
   const {
     currentUser,
-    agreement,
 
-    pushNewParticipant,
+    updateCurrentParticipant,
     setCurrentUser
   } = props;
 
@@ -37,12 +36,6 @@ export const Home: React.FC<THomeProps> = memo((props) => {
     payment,
     password,
   } = currentUser;
-
-  const [agree, setAgreement] = useState(agreement);
-  const soldCheckbox = () => {
-    setAgreement(!agree);
-  };
-
 
   const initialValues: IFormValues = {
     FIO,
@@ -61,7 +54,7 @@ export const Home: React.FC<THomeProps> = memo((props) => {
 
     phone: Yup.string().required('Поле обязательно'),
 
-    password: agree && Yup.string().required('Поле обязательно')
+    password:  Yup.string().required('Поле обязательно')
       .min(3, 'Минимум 3 символа')
       .max(10, 'Максимум 10 символов')
   });
@@ -73,8 +66,8 @@ export const Home: React.FC<THomeProps> = memo((props) => {
     validationSchema,
     onSubmit: values => {
       //alert(JSON.stringify(values, null, 2));
-      pushNewParticipant(values);
-      agree && setCurrentUser(values);
+      setCurrentUser(values);
+      updateCurrentParticipant(values);
       history.push("/participants");
     },
   });
@@ -151,59 +144,25 @@ export const Home: React.FC<THomeProps> = memo((props) => {
             onChange={formik.handleChange('payment')}
             value={formik.values.payment}
           />
-
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check
-            type="checkbox"
-            label="Согласие на создание профиля"
-            checked={agree}
-            onChange={soldCheckbox}
-          />
+        <Form.Group className="col-xs-12 col-md-6 mb-3" controlId="password">
+          <Form.Label>Пароль</Form.Label>
+
+          <Form.Control type="password" {...formik.getFieldProps("password")} />
+
+          {formik.errors.password ? <div className="invalid-field">{formik.errors.password}</div> : null}
         </Form.Group>
 
-        {
-          agree && (
-            <>
-              <Form.Group className="col-xs-12 col-md-6 mb-3" controlId="formHiddenEmail">
-                <Form.Label>Логин</Form.Label>
-
-                <Form.Control {...formik.getFieldProps("email")} disabled/>
-
-                {formik.errors.email ? <div className="invalid-field">{formik.errors.email}</div> : null}
-              </Form.Group>
-
-              <Form.Group className="col-xs-12 col-md-6 mb-3" controlId="password">
-                <Form.Label>Пароль</Form.Label>
-
-                <Form.Control type="password" {...formik.getFieldProps("password")} />
-
-                {formik.errors.password ? <div className="invalid-field">{formik.errors.password}</div> : null}
-              </Form.Group>
-            </>
-          )
-        }
-
-        {
-          agree ? (
-            <Form.Group className="mb-3">
-              <Button
-                variant="primary"
-                type="submit"
-                style={{maxWidth: 200}}
-                disabled={!!formik.errors.password || !!formik.errors.email}>
-                Зарегистрироваться
-              </Button>
-            </Form.Group>
-          ) : (
-            <Form.Group className="mb-3">
-              <Button variant="primary" type="submit" style={{maxWidth: 200}}>
-                Отправить заявку
-              </Button>
-            </Form.Group>
-          )
-        }
+        <Form.Group className="mb-3">
+          <Button
+            variant="primary"
+            type="submit"
+            style={{maxWidth: 200}}
+            disabled={!!formik.errors.password || !!formik.errors.email}>
+            Сохранить
+          </Button>
+        </Form.Group>
 
       </Form>
     </Container>

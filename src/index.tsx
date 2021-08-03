@@ -11,13 +11,11 @@ import { Root } from "./views";
 
 let reRenderEntireTree = () => {
   ReactDOM.render(
-    <React.StrictMode>
       <Provider store={store}>
         <BrowserRouter>
           <Root/>
         </BrowserRouter>
-      </Provider>
-    </React.StrictMode>,
+      </Provider>,
     document.getElementById('root')
   );
 };

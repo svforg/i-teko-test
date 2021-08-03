@@ -11,8 +11,9 @@ export class participantsTC {
      try {
        const data = await participantsApi.getParticipants();
 
-       if (data.status === 200) {
-         dispatch(participantsAC.setParticipantsDataAC(data.data));
+       if (data.code === 200) {
+         console.log('Ответ от клиента: Данные Получены');
+         dispatch(participantsAC.setParticipantsDataAC(data.data.participants));
        }
      } catch (error) {
        new Error(`Похоже, что-то пошло не так: ${error}`)

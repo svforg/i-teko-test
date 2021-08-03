@@ -1,9 +1,10 @@
 import React from 'react';
-import {useSelector} from "react-redux";
-import {Redirect} from 'react-router-dom';
-import {participantsSelectors} from "../../store/participants/selectors";
+import { useSelector } from "react-redux";
+import { Redirect } from 'react-router-dom';
 
-export const withAuthRedirect = (Component: React.FC) => (props: any) => {
+import { participantsSelectors } from "../../store/participants/selectors";
+
+export const withRedirectToHome = (Component: React.FC) => (props: any) => {
   const { isUserAuth } = useSelector(participantsSelectors.baseParticipants);
 
   if (!isUserAuth) {
@@ -14,5 +15,6 @@ export const withAuthRedirect = (Component: React.FC) => (props: any) => {
       }}/>
     );
   }
+
   return <Component/>
 };

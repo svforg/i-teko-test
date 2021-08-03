@@ -1,6 +1,7 @@
 import React, { ComponentType } from 'react';
 import { RouteComponentProps } from "react-router";
-import { withAuthRedirect } from "../utils/hoc/withAuthRedirect";
+import { withRedirectToHome } from "../utils/hoc/withRedirectToHome";
+import { withRedirectToProfile } from "../utils/hoc/withRedirectToProfile";
 
 const Home = React.lazy(() =>
   import(/* webpackChunkName: "views-home" */ '../views/Home')
@@ -26,7 +27,7 @@ export const AppRoutes: IRoute[] = [
     link: '/',
     title: 'Home',
     exact: true,
-    component: Home,
+    component: withRedirectToProfile(Home),
   },
   {
     link: "/participants",
@@ -38,6 +39,6 @@ export const AppRoutes: IRoute[] = [
     link: "/profile",
     title: "Profile",
     exact: false,
-    component: withAuthRedirect(Profile),
+    component: withRedirectToHome(Profile),
   },
 ];

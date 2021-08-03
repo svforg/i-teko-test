@@ -1,7 +1,8 @@
-export default [
+export const participantsMockData = [
   {
     FIO: "Иванов Иван Иваныч",
     birthday: "1967-7-28",
+    date: "1997-05-08",
     email: "fake@mail.com",
     phone: "79222222222",
     distance: 3,
@@ -12,6 +13,7 @@ export default [
   {
     FIO: "Петров Петр Иваныч",
     birthday: "1986-5-27",
+    date: "1992-05-08",
     email: "fake@mail.com",
     phone: "79222222222",
     distance: 5,
@@ -21,6 +23,7 @@ export default [
   {
     FIO: "Сидоров Алексей Иваныч",
     birthday: "1981-6-27",
+    date: "1912-05-08",
     email: "fake@mail.com",
     phone: "79222222222",
     distance: 10,
@@ -30,6 +33,7 @@ export default [
   {
     FIO: "Петрова Ирина Ивановна",
     birthday: "1986-5-27",
+    date: "2000-05-08",
     email: "fake@mail.com",
     phone: "79222222222",
     distance: 5,
@@ -39,6 +43,7 @@ export default [
   {
     FIO: "Сидорова Татьяна Ивановна",
     birthday: "1981-6-27",
+    date: "2002-05-08",
     email: "fake@mail.com",
     phone: "79222222222",
     distance: 10,
