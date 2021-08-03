@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState } from 'react';
+import React, { memo, useCallback } from 'react';
 import { Button, Container, Form } from "react-bootstrap";
 import { useHistory } from "react-router";
 
@@ -74,7 +74,7 @@ export const Profile: React.FC<THomeProps> = memo((props) => {
 
   const renderFormInput = useCallback(() => (
     <Form.Control {...formik.getFieldProps("birthday")} />
-  ), []);
+  ), [formik]);
 
   return (
     <Container>

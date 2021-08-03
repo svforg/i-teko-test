@@ -81,7 +81,7 @@ export const Home: React.FC<THomeProps> = memo((props) => {
 
   const renderFormInput = useCallback(() => (
     <Form.Control {...formik.getFieldProps("birthday")} />
-  ), []);
+  ), [formik]);
 
   return (
     <Container>

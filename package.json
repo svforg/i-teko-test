@@ -1,7 +1,8 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
+  "name": "it_resource",
+  "homepage": "https://svforg.github.io/it_resource/",
   "private": true,
+  "version": "0.1.0",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -32,7 +33,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -54,6 +56,7 @@
     "@types/react-datepicker": "^4.1.4",
     "@types/react-input-mask": "^3.0.1",
     "@types/react-redux": "^7.1.18",
-    "@types/react-router-dom": "^5.1.8"
+    "@types/react-router-dom": "^5.1.8",
+    "gh-pages": "^3.2.3"
   }
 }
