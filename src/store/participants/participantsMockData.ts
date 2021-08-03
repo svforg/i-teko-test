@@ -1,0 +1,48 @@
+export default [
+  {
+    FIO: "Иванов Иван Иваныч",
+    birthday: "1967-7-28",
+    email: "fake@mail.com",
+    phone: "79222222222",
+    distance: 3,
+    payment: 100,
+    agreement: true,
+    password: "asdfg"
+  },
+  {
+    FIO: "Петров Петр Иваныч",
+    birthday: "1986-5-27",
+    email: "fake@mail.com",
+    phone: "79222222222",
+    distance: 5,
+    payment: 200,
+    agreement: false,
+  },
+  {
+    FIO: "Сидоров Алексей Иваныч",
+    birthday: "1981-6-27",
+    email: "fake@mail.com",
+    phone: "79222222222",
+    distance: 10,
+    payment: 300,
+    agreement: false,
+  },
+  {
+    FIO: "Петрова Ирина Ивановна",
+    birthday: "1986-5-27",
+    email: "fake@mail.com",
+    phone: "79222222222",
+    distance: 5,
+    payment: 200,
+    agreement: false,
+  },
+  {
+    FIO: "Сидорова Татьяна Ивановна",
+    birthday: "1981-6-27",
+    email: "fake@mail.com",
+    phone: "79222222222",
+    distance: 10,
+    payment: 300,
+    agreement: false,
+  },
+];
